@@ -1,1 +1,57 @@
+SELECT * FROM day1.employee;
+# 1 Find the Second Highest Salary
+SELECT MAX(salary) AS Second_Highest_Salary
+FROM employee
+WHERE salary < (SELECT MAX(salary) FROM employee);
+
+#2. Write a query to fetch employees who earn more than their manager. 
+SELECT e.name AS Employee, e.salary AS Emp_Salary, 
+       m.name AS Manager, m.salary AS Manager_Salary
+FROM employee e
+JOIN employee m ON e.manager_id = m.emp_id
+WHERE e.salary > m.salary;
+
+#3. Write a query to find duplicate rows in a table.
+SELECT name, salary, COUNT(*)
+FROM employee
+GROUP BY name, salary
+HAVING COUNT(*) > 1;
+
+#4. Write a query to find employees who joined in the last 3 months
+SELECT *
+FROM employee
+WHERE joining_date >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH);
+
+#5Write a query to find department-wise average salary.
+SELECT dept_id, AVG(salary) AS Avg_Salary
+FROM employee
+GROUP BY dept_id;
+
+#6. Write a query to count the number of employees in each department. 
+SELECT dept_id, COUNT(*) AS Total_Employees
+FROM employee
+GROUP BY dept_id;
+
+#7. Write a query to find employees whose name starts with ‘A’. 
+SELECT *
+FROM employee
+WHERE name LIKE 'A%';
+
+#8. Write a query to find employees who do not have a manager. 
+SELECT *
+FROM employee
+WHERE manager_id IS NULL;
+
+#9. Write a query to find total salary expense of the company. 
+SELECT SUM(salary) AS Total_Salary_Expense
+FROM employee;
+
+#10. Write a query to fetch the details of top 5 highest-paid employees
+SELECT *
+FROM employee
+ORDER BY salary DESC
+LIMIT 5;
+
+
+
 
