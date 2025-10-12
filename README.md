@@ -30,6 +30,3 @@ covering topics from beginner to advanced level.
 | **Day 4** | Subqueries | Nested Queries, `IN`, `EXISTS`, `NOT EXISTS` |
 | **Day 5** | Advanced | `Nth Highest Salary`, `Window Functions` |
 
----
-
-## 📘 Example Folder Structure
